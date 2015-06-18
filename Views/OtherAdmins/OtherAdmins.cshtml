@@ -1,0 +1,39 @@
+﻿@model Term_Project_M2.Models.ModelClass
+@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="row" data-toggle="isotope">
+
+    @foreach (var z in Model.aList)
+    {
+        if (Model.admin.Id != z.Id)
+        {
+            <div class="col-md-6 col-lg-4 item">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="media">
+                            <div class="pull-left">
+                                <img src="@Model.getAdminDp(z.Id)" alt="people" class="media-object img-circle" style="width:50px;height:50px;" />
+                            </div>
+                            <div class="media-body">
+                                @if(Model.admin.Id==1)
+                                {
+                                    <a href="../OtherAdmins/DeleteAdmin/@z.Id" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
+                                }
+                                <h4 class="media-heading margin-v-5"><a href="#">@Model.getAdminName(z.Id)</a></h4>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        }
+    }
+</div>

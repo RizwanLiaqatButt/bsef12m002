@@ -1,0 +1,120 @@
+﻿@model Term_Project_M2.Models.ModelClass
+@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+@section NewAdmin
+{
+<div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="panel-title">Add new Admin</div>
+
+        </div>
+        <div class="panel-body">
+
+
+            <form id="signupform" class="form-horizontal" method="post" action="../NewAdmin/AddNewAdmin" role="form">
+                @*@using (Html.BeginForm("AddNewAdmin", "NewAdmin",
+
+                                                                new { },
+                                                                FormMethod.Post,
+                                                                new { @class = "form-horizontal", id = "signupform" }
+                                                                ))
+                    {*@
+                <div id="signupalert" style="display:none" class="alert alert-danger">
+                    <p>Error:</p>
+                    <span></span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="email" class="col-md-3 control-label">UserName</label>
+                    <div class="col-md-9">
+
+                        <input id ="UserName" type="text" class="form-control" name="Email" placeholder="User Name">
+                        @*@Html.TextBoxFor(u => Model.admin.Email, new { @class = "form-control", id = "UserName", placeholder = "User Name" })*@
+
+                        <div id="result"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstname" class="col-md-3 control-label">First Name</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" name="FirstName" placeholder="First Name">
+                        @*@Html.TextBoxFor(u => Model.admin.FirstName, new { @class = "form-control", placeholder = "First Name" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" name="LastName" placeholder="Last Name">
+                        @*@Html.TextBoxFor(u => Model.admin.LastName, new { @class = "form-control", placeholder = "Last Name" })*@
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="password" class="col-md-3 control-label">Password</label>
+                    <div class="col-md-9">
+                        <input type="password" class="form-control" name="Password" placeholder="Password">
+                        @*@Html.PasswordFor(u => Model.admin.Password, new { @class = "form-control", placeholder = "Password" })*@
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <!-- Button -->
+                    <div class="col-md-offset-3 col-md-9">
+
+                        <input type="submit" class="btn btn-info" value="Add" />
+                    </div>
+                </div>
+
+
+                <!--   } -->
+
+
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+<script>
+
+    $(document).ready(function () {
+
+
+
+        $('#UserName').blur(function () {
+
+            var userName = $('#UserName').val();
+
+            //alert('User Name ='+ userName);
+
+            $.getJSON("/NewAdmin/CheckUserName?UserName=" + userName, function (data) {
+
+                if (data) {
+                    $('#UserName').val("");
+                    $('#result').text("Invalid Name or User already exists");
+
+                }
+                else {
+                    $('#result').text("User Name is available");
+                }
+            });
+
+        });
+
+    });
+</script>
+    } 
+

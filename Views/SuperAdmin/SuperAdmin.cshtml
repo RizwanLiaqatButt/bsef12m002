@@ -1,0 +1,103 @@
+﻿@model Term_Project_M2.Models.ModelClass
+@{
+    Layout = "~/Views/Admin/_Layout.cshtml";
+}
+
+
+<!--
+isi div saray elements dynamically push kertay jao..auto handle keray ga size
+-->
+@section AdminPanel
+{
+
+<div class="timeline row" data-toggle="isotope">
+
+    @if (Model.pList.Count > 0)
+        {
+            foreach (var posty in Model.pList)
+            {
+                <div class="col-xs-12 col-md-6 col-lg-4 item">
+                    <div class="timeline-block">
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="#"><img src="@Model.getUserDp(posty.UserId)" class="media-object" style="width:50px;height:50px"></a>
+                                    </div>
+                                    <div class="media-body">
+                                        @if(Model.admin.Id==1)
+                                        {
+                                            <a href="../SuperAdmin/DeletePost/@posty.Id" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
+                                        }
+                                        
+
+                                        <a href="#">@Model.getUserName(posty.UserId) </a>
+
+
+
+                                        <span> shared on @posty.Date </span>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (@posty.Text != "")
+                            {
+                                <div class="panel-body">
+                                    @posty.Text
+                                </div>
+                            }
+
+                            <!-- 4:3 aspect ratio -->
+                            @if (@posty.Media != "")
+                            {
+                                <div class="panel-body">
+                                    <!--     <iframe class="embed-responsive-item" src="//player.vimeo.com/video/50522981?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff"></iframe>-->
+                                    <img src="@posty.Media" class="img-responsive">
+
+                                </div>
+                            }
+
+                            <ul class="comments">
+
+                                @if (Model.cList.Count > 0)
+                                {
+
+                                    foreach (var com in Model.cList)
+                                    {
+                                        if (com.PostId == posty.Id)
+                                        {
+                                            <li class="media">
+                                                <div class="media-left">
+                                                    <a href="#"><img src="@Model.getUserDp(com.UserId)" class="media-object" style="width:50px;height:50px;"></a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="pull-right dropdown" data-show-hover="li">
+                                                        <a href="#" data-toggle="dropdown" class="toggle-button">
+                                                            <i class="fa fa-pencil"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu" role="menu"> 
+                                                            <li><a href="../SuperAdmin/DeleteComment/@com.Id" >Delete</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <a href="#" class="comment-author">@Model.getUserName(com.UserId) </a>
+                                                    <span>@com.Text</span>
+                                                    <div class="comment-date"> @com.Date </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                }
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+
+
+</div>
+
+    
+}

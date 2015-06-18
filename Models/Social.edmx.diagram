@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="980509123ed14af9bb299308d66a0742" Name="Diagram1">
+        <EntityTypeShape EntityType="MySocialDBModel.Comment" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MySocialDBModel.MyFriend" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MySocialDBModel.Post" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MySocialDBModel.User" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="MySocialDBModel.FK_Comments_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="MySocialDBModel.FK_Comments_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="MySocialDBModel.FK_MyFriends_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="MySocialDBModel.FK_Post_ToTable" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MySocialDBModel.Admin" Width="1.5" PointX="3.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
